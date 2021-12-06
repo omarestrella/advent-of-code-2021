@@ -27,20 +27,20 @@ private struct PointPairs: Equatable {
 
   var linePoints: [(x: Int, y: Int)] {
     if isStraightLine {
-      let ranges = x1 == x2 ?
-        Array(min(y1, y2) ... max(y1, y2)).map { (x: x1, y: $0) } :
-        Array(min(x1, x2) ... max(x1, x2)).map { (x: $0, y: y1) }
-      return ranges
+      if x1 == x2 {
+        return (min(y1, y2) ... max(y1, y2)).map { (x: x1, y: $0) }
+      }
+      return (min(x1, x2) ... max(x1, x2)).map { (x: $0, y: y1) }
     }
-    
+
     let min = x1 < x2 ? (x1, y1) : (x2, y2)
     let max = x1 < x2 ? (x2, y2) : (x1, y1)
-    
-    return (min.0...max.0).reduce([], { (list: [(Int, Int)], x: Int) in
+
+    return (min.0 ... max.0).reduce([]) { (list: [(Int, Int)], x: Int) in
       let dy = min.1 > max.1 ? -1 : 1
       guard let lastPoint = list.last else { return [(x, min.1)] }
       return list + [(x: x, y: lastPoint.1 + dy)]
-    })
+    }
   }
 }
 
@@ -124,7 +124,7 @@ struct Day5: Solution {
         return colSum
       }
     }
-    
+
     return "\(sum)"
   }
 }
