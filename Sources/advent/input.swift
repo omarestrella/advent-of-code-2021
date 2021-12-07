@@ -15,6 +15,7 @@ func getEnvVar(name: String) -> String {
 }
 
 func getInput(day: Int) async -> String {
+//  return "3,4,3,1,2"
   guard let url = URL(string: "https://adventofcode.com/2021/day/\(day)/input") else {
     print("Bad URL")
     return ""

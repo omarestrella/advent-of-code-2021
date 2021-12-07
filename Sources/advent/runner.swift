@@ -29,6 +29,8 @@ struct Runner {
       return await runDay(solution: Day4())
     case 5:
       return await runDay(solution: Day5())
+    case 6:
+      return await runDay(solution: Day6())
     default:
       return ("no part 1", "no part 2")
     }
