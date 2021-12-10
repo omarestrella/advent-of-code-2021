@@ -6,7 +6,7 @@ DispatchQueue.global(qos: .default).async(group: group) {
   group.enter()
   Task {
     let start = Date.now
-    let (partOne, partTwo) = await Runner.shared.run(day: 7)
+    let (partOne, partTwo) = await Runner.shared.run(day: 8)
     let end = Date.now
     print("Part 1: \(partOne)")
     print("Part 2: \(partTwo)")
